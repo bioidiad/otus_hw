@@ -1,4 +1,4 @@
-module github.com/OtusGolang/home_work/hw01_hello_otus
+module github.com/bioidiad/otus_hw
 
 go 1.16
 
