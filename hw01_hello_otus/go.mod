@@ -1,4 +1,4 @@
-module github.com/bioidiad/otus_hw
+module github.com/bioidiad/otus_hw/hw01_hello_otus
 
 go 1.16
 
