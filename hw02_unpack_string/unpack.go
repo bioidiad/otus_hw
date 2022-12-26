@@ -2,11 +2,14 @@ package hw02unpackstring
 
 import (
 	"errors"
+	"fmt"
 )
 
 var ErrInvalidString = errors.New("invalid string")
 
-func Unpack(_ string) (string, error) {
-	// Place your code here.
+func Unpack(sentence string) (string, error) {
+	for _, char := range sentence {
+		fmt.Println(char)
+	}
 	return "", nil
 }
