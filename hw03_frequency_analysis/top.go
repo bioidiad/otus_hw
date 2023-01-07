@@ -14,7 +14,7 @@ type sortedMap struct {
 func (sm *sortedMap) valSortedSet(words []string) {
 	sm.set = make(map[string]int)
 	for _, word := range words {
-		sm.set[word] += 1
+		sm.set[word]++
 	}
 
 	Keys := make([]string, 0, len(sm.set))
