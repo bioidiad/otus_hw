@@ -34,8 +34,10 @@ func (sm *sortedMap) valSortedSet(words []string) {
 	sm.descSortedKeys = Keys
 }
 
-var splitter = regexp.MustCompile(`\s+`)
-var trimmer = regexp.MustCompile(`^[^а-яА-Яa-zA-Z0-9 ]+|[^а-яА-Яa-zA-Z0-9 ]+$`)
+var (
+	splitter = regexp.MustCompile(`\s+`)
+	trimmer  = regexp.MustCompile(`^[^а-яА-Яa-zA-Z0-9 ]+|[^а-яА-Яa-zA-Z0-9 ]+$`)
+)
 
 func splitWords(text string) []string {
 	var result []string
