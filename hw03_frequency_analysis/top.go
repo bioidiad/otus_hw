@@ -61,7 +61,6 @@ func Top10(text string) []string {
 	sm.valSortedSet(words)
 	if len(sm.descSortedKeys) > 10 {
 		return sm.descSortedKeys[:10]
-	} else {
-		return sm.descSortedKeys
 	}
+	return sm.descSortedKeys
 }
