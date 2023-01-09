@@ -2,10 +2,11 @@ package hw02unpackstring
 
 import (
 	"errors"
-	"golang.org/x/example/stringutil"
 	"strconv"
 	"strings"
 	"unicode"
+
+	"golang.org/x/example/stringutil"
 )
 
 var ErrInvalidString = errors.New("invalid string")
