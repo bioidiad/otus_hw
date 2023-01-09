@@ -45,7 +45,7 @@ func (lst *list) firstElem(v interface{}) *ListItem {
 	lst.front = &firstElem
 	lst.back = &firstElem
 	lst.len = 1
-	fmt.Println("First element created", firstElem.Value, firstElem.Next, firstElem.Prev, lst.Len(), lst.Front(), lst.Back())
+	fmt.Println("First element created", firstElem.Value, firstElem.Next, firstElem.Prev, lst.Len(), lst.Front(), lst.Back()) //nolint:lll
 	return &firstElem
 }
 
