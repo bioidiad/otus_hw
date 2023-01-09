@@ -11,27 +11,32 @@ type sortedMap struct {
 	descSortedKeys []string
 }
 
+func (sm *sortedMap) GetTopNWords(num int) []string {
+	if len(sm.descSortedKeys) > num {
+		return sm.descSortedKeys[:num]
+	}
+	return sm.descSortedKeys
+}
+
 func (sm *sortedMap) valSortedSet(words []string) {
 	sm.set = make(map[string]int)
 	for _, word := range words {
 		sm.set[word]++
 	}
 
-	Keys := make([]string, 0, len(sm.set))
+	keys := make([]string, 0, len(sm.set))
 
 	for key := range sm.set {
-		Keys = append(Keys, key)
+		keys = append(keys, key)
 	}
 
-	sort.Slice(Keys, func(i, j int) bool {
-		return Keys[i] < Keys[j]
+	sort.Slice(keys, func(i, j int) bool {
+		if sm.set[keys[i]] == sm.set[keys[j]] {
+			return keys[i] < keys[j]
+		}
+		return sm.set[keys[i]] > sm.set[keys[j]]
 	})
-
-	sort.SliceStable(Keys, func(i, j int) bool {
-		return sm.set[Keys[i]] > sm.set[Keys[j]]
-	})
-
-	sm.descSortedKeys = Keys
+	sm.descSortedKeys = keys
 }
 
 var (
@@ -59,8 +64,6 @@ func Top10(text string) []string {
 	var sm sortedMap
 	words := splitWords(text)
 	sm.valSortedSet(words)
-	if len(sm.descSortedKeys) > 10 {
-		return sm.descSortedKeys[:10]
-	}
-	return sm.descSortedKeys
+
+	return sm.GetTopNWords(10)
 }
