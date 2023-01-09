@@ -2,20 +2,13 @@ package hw02unpackstring
 
 import (
 	"errors"
+	"golang.org/x/example/stringutil"
 	"strconv"
 	"strings"
 	"unicode"
 )
 
 var ErrInvalidString = errors.New("invalid string")
-
-func Reverse(s string) string {
-	rns := []rune(s)
-	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
-		rns[i], rns[j] = rns[j], rns[i]
-	}
-	return string(rns)
-}
 
 func Unpack(s string) (string, error) {
 	if len(s) == 0 {
@@ -31,7 +24,7 @@ func Unpack(s string) (string, error) {
 		b   strings.Builder
 	)
 
-	s = Reverse(s)
+	s = stringutil.Reverse(s)
 	tmp := rune(s[0])
 	counter := 1
 
@@ -51,5 +44,5 @@ func Unpack(s string) (string, error) {
 		tmp = r
 	}
 
-	return Reverse(b.String()), nil
+	return stringutil.Reverse(b.String()), nil
 }
